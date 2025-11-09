@@ -1,3 +1,4 @@
+
 # Python
 __pycache__/
 *.py[cod]
@@ -32,3 +33,23 @@ build/
 # Coverage / testing
 .coverage
 htmlcov/
+
+
+# PyCharm / IntelliJ
+.idea/
+*.iml
+
+# Virtual environments
+.venv/
+venv/
+/.venv/
+
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+
+# Environment and local settings
+.env
+.DS_Store
+
+
