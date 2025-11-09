@@ -7,6 +7,7 @@
           <resourceRoots>
             <path value="file://$PROJECT_DIR$/client" />
             <path value="file://$PROJECT_DIR$/server" />
+            <path value="file://$PROJECT_DIR$/server/static" />
           </resourceRoots>
         </entryData>
       </entry>
