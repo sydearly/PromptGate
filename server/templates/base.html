@@ -36,11 +36,6 @@
     <!-- CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
-
-    <!-- JS (deferred loading for performance) -->
-    <script src="js/auth.js" defer></script>
-    <script src="js/chat.js" defer></script>
-
     <!-- Favicons / Manifest -->
     <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon-32x32.png') }}">
@@ -53,5 +48,7 @@
 </head>
 <body>
 {% block body %}{% endblock %}
+{% block scripts %}{% endblock %}
 </body>
 </html>
+

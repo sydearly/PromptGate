@@ -32,7 +32,7 @@
 
         <div class="pg-input-actions">
             <button type="submit">Send</button>
-            <span class="pg-hint" id="rate-hint">Rate limit: 10/min</span>
+            <span class="pg-hint" id="rate-hint">Rate limit: 3/min</span>
         </div>
     </form>
 
@@ -47,3 +47,7 @@
     </aside>
 </main>
 {% endblock %}
+{% block scripts %}
+  <script src="{{ url_for('static', filename='js/chat.js') }}" defer></script>
+{% endblock %}
+
