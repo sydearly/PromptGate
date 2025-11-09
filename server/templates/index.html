@@ -1,0 +1,20 @@
+{# templates/index.html #}
+{% extends "base.html" %}
+
+{% block head %}{# extra
+<head> tags for index if any #}{% endblock %}
+
+    {% block body %}
+    <section class="pg-landing">
+        <div class="pg-hero">
+            <img class="pg-hero-logo"
+                 src="{{ url_for('static', filename='assets/PromptGate.png') }}"
+                 alt="PromptGate Logo">
+            <div class="pg-hero-content">
+                <h1>Welcome to PromptGate</h1>
+                <p>A secure AI prototyping interface built with Flask, Google OAuth, and OpenAI.</p>
+                <a href="{{ url_for('auth.login') }}" class="pg-btn">Log in with Google</a>
+            </div>
+        </div>
+    </section>
+    {% endblock %}

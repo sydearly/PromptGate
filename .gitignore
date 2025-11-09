@@ -1,4 +1,40 @@
 
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environment
+/venv/
+
+# Environment variables
+.env
+
+# IDE files
+.idea/
+.vscode/
+
+# OS junk
+.DS_Store
+
+# Logs & Data
+*.log
+data/*.jsonl
+
+# Node / frontend (if ever used)
+node_modules/
+dist/
+build/
+
+# PyCharm project files
+*.iml
+
+# Coverage / testing
+.coverage
+htmlcov/
+
+
 # PyCharm / IntelliJ
 .idea/
 *.iml
@@ -15,4 +51,5 @@ __pycache__/
 # Environment and local settings
 .env
 .DS_Store
+
 
