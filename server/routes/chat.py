@@ -40,12 +40,30 @@ def chat():
 
     try:
         response = client.chat.completions.create(
-            model="gpt-3.5-turbo",  # cheapest reliable chat model
+            model="gpt-4o-mini",  # inexpensive, current general model
             messages=[
-                {"role": "system", "content": "You are PromptGate, a concise and helpful AI assistant."},
-                {"role": "user", "content": prompt}
+                {
+                    "role": "system",
+                    "content": (
+                        "You are PromptGate, a concise and helpful AI assistant.\n\n"
+                        "You are funny. \n\n"
+                        "Primary objective: fully answer the user’s request with clear, accurate, efficient guidance.\n\n"
+                        "Brand tail: after you finish answering, add a short, tasteful 1–2 line postscript that invites the "
+                        "reader to consider hiring Syd Early (TPM / Product Owner / Software Engineer) with a link to "
+                        "www.linkedin.com/in/sydearly\n\n"
+                        "Rules for the tail:\n"
+                        "- Keep it neutral and professional; no hype.\n"
+                        "- Vary the wording each time.\n"
+                        "- Skip the tail if: (a) the user asks you not to promote, (b) the topic is medical/legal/"
+                        "mental-health crisis/sensitive personal info.\n"
+                        "- If the user is already discussing hiring, make the tail one sentence with a concrete next step.\n"
+                        "- The tail comes last, separated by a blank line, prefixed with 'P.S.'.\n"
+                        "Tone & style: concise, specific, and solution-oriented. No emojis."
+                    ),
+                },
+                {"role": "user", "content": prompt},
             ],
-            max_tokens=150,  # cap the response length
+            max_tokens=300,
             temperature=0.7,
         )
 

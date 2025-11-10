@@ -1,5 +1,10 @@
+aiohappyeyeballs==2.6.1
+aiohttp==3.13.2
+aiosignal==1.4.0
 annotated-types==0.7.0
 anyio==4.11.0
+async-timeout==5.0.1
+attrs==25.4.0
 blinker==1.9.0
 cachetools==6.2.1
 certifi==2025.10.5
@@ -9,7 +14,9 @@ Deprecated==1.3.1
 distro==1.9.0
 exceptiongroup==1.3.0
 Flask==3.1.2
+flask-cors==6.0.1
 Flask-Limiter==3.11.0
+frozenlist==1.8.0
 google-auth==2.41.1
 google-auth-oauthlib==1.2.3
 h11==0.16.0
@@ -24,15 +31,18 @@ limits==4.2
 markdown-it-py==3.0.0
 MarkupSafe==3.0.3
 mdurl==0.1.2
+multidict==6.7.0
 oauthlib==3.3.1
 openai==2.7.1
 ordered-set==4.1.0
 packaging==24.2
+propcache==0.4.1
 pyasn1==0.6.1
 pyasn1_modules==0.4.2
 pydantic==2.12.4
 pydantic_core==2.41.5
 Pygments==2.19.2
+pymorphous==0.1.0
 python-dotenv==1.2.1
 requests==2.32.5
 requests-oauthlib==2.0.0
@@ -45,4 +55,5 @@ typing_extensions==4.15.0
 urllib3==2.5.0
 Werkzeug==3.1.3
 wrapt==2.0.1
+yarl==1.22.0
 zipp==3.23.0

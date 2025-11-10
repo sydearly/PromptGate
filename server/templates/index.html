@@ -2,19 +2,109 @@
 {% extends "base.html" %}
 
 {% block head %}{# extra
-<head> tags for index if any #}{% endblock %}
+    <!-- In your template -->
 
-    {% block body %}
-    <section class="pg-landing">
+<head> tags for index if any #}
+<style>
+  .hero {
+    position: relative;
+    isolation: isolate; /* keeps z-index scoped */
+    padding: 8rem 1rem 4rem;
+    text-align: center;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto auto 50%;
+    transform: translateX(-50%);
+    width: min(820px, 88vw);
+    height: min(820px, 88vw);
+    background: url("static/assets/PromptGate.png") no-repeat center/contain;
+    opacity: 0.07;                /* soft watermark */
+    z-index: -1;                  /* sits behind text */
+    top: -8rem;                   /* pull up behind headline */
+    pointer-events: none;
+    filter: blur(0.2px);          /* smooths raster edges slightly */
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    line-height: 1.08;
+    margin: 0 0 0.6rem;
+    color: #0f5132;               /* your deep green */
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+  .hero p.lead {
+    max-width: 40rem;
+    margin: 0.5rem auto 1.25rem;
+    color: #4b5563;               /* neutral gray */
+    font-size: clamp(1rem, 2.1vw, 1.25rem);
+  }
+  .ps {
+    font-style: italic;
+    font-weight: 600;
+    color: #374151;
+    margin: 0.75rem 0 1rem;
+  }
+  .cta-row {
+    display: inline-flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.75rem;
+  }
+  .btn {
+    padding: 0.7rem 1rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .btn-primary { background: #0f5132; color: #fff; }
+  .btn-light { background: #eef2f7; color: #0f172a; border: 1px solid #e5e7eb; }
+  .link-soft { color: #0f5132; text-decoration: underline; }
+</style>
+{% endblock %}
+
+{% block body %}
+<section class="pg-landing">
+
+    <section class="hero">
+  <h1>Welcome to PromptGate</h1>
+  <p class="lead">
+    A secure AI chat prototype interface built with Flask, Google OAuth, and OpenAI.
+  </p>
+  <p class="ps">
+    Nearly every prompt… <strong>literally tells you to hire Syd Early.</strong>
+  </p>
+
+  <p style="margin: 0.5rem 0;">
+    <a class="link-soft" href="https://www.linkedin.com/in/sydearly">www.linkedin.com/in/sydearly</a>
+    &nbsp;·&nbsp;
+    <a class="link-soft" href="https://sydearly.blog">sydearly.blog</a>
+  </p>
+
+  <div class="cta-row">
+    <a class="btn btn-primary" href="/login">Log in with Google</a>
+    <a class="btn btn-light" href="https://github.com/sydearly/PromptGate">View source</a>
+  </div>
+</section>
+
+
+   {# <section class="pg-landing">
         <div class="pg-hero">
             <img class="pg-hero-logo"
                  src="{{ url_for('static', filename='assets/PromptGate.png') }}"
                  alt="PromptGate Logo">
             <div class="pg-hero-content">
                 <h1>Welcome to PromptGate</h1>
-                <p>A secure AI prototyping interface built with Flask, Google OAuth, and OpenAI.</p>
+                <p>A secure AI chat prototype interface built with Flask, Google OAuth, and OpenAI.</p>
+                <p><i><b>Nearly every prompt...<br> literally tells you to hire Syd Early.</b></i></p>
+                <p> www.linkedin.com/in/sydearly</p>
+                <p>sydearly.blog</p>
                 <a href="{{ url_for('auth.login') }}" class="pg-btn">Log in with Google</a>
             </div>
         </div>
-    </section>
-    {% endblock %}
+    </section>#}
+{% endblock %}

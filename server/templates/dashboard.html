@@ -2,52 +2,63 @@
 {% block title %}PromptGate – Dashboard{% endblock %}
 
 {% block head %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 {% endblock %}
 
 {% block body %}
-<header class="pg-header">
-    <div class="pg-brand">
-        <img src="{{ url_for('static', filename='assets/PromptGate.png') }}" alt="PromptGate logo" class="pg-logo">
-        <h1 class="pg-title">PromptGate</h1>
-    </div>
-
-    <div class="pg-user">
-        <span class="pg-user-label">Logged in as</span>
-        <span class="pg-user-email">{{ user }}</span>
-        <a class="pg-logout" href="{{ url_for('auth.logout') }}">Logout</a>
-    </div>
-</header>
-
-<main class="pg-main">
-    <!-- Output area -->
-    <section class="pg-output" id="output" aria-live="polite" aria-busy="false">
-        <div class="pg-msg pg-msg--ai">Welcome to PromptGate.</div>
-    </section>
-
-    <!-- Input form -->
-    <form class="pg-input" id="chat-form">
-        <label for="prompt" class="sr-only">Your prompt</label>
-        <textarea id="prompt" name="prompt" rows="3" placeholder="Type your prompt…"></textarea>
-
-        <div class="pg-input-actions">
-            <button type="submit">Send</button>
-            <span class="pg-hint" id="rate-hint">Rate limit: 3/min</span>
+    <header class="pg-header">
+        <div class="pg-brand">
+            <img src="{{ url_for('static', filename='assets/PromptGate.png') }}" alt="PromptGate logo" class="pg-logo">
+            <h1 class="pg-title">PromptGate</h1>
         </div>
-    </form>
 
-    <!-- Request Log -->
-    <aside class="pg-log">
-        <details open>
-            <summary>Request Log</summary>
-            <ul class="pg-log-list" id="log-list">
-                <!-- Dynamic request logs -->
-            </ul>
-        </details>
-    </aside>
-</main>
+        <div class="pg-user">
+            <span class="pg-user-label">Logged in as</span>
+            <span class="pg-user-email">{{ user }}</span>
+            <a class="pg-logout" href="{{ url_for('auth.logout') }}">Logout</a>
+        </div>
+
+
+
+    </header>
+     <header class="pg-sub-header">
+     <div class="pg-system">
+            <span class="pg-system-label"><i>3 rpm - gpt-4o-mini</i><br></span>
+        </div>
+        <div class="pg-system-date">
+            <span class="pg-system-date">The training data for this AI was frozen in October 2021</span>
+        </div>
+     </header>
+
+    <main class="pg-main">
+        <!-- Output area -->
+        <section class="pg-output" id="output" aria-live="polite" aria-busy="false">
+            <div class="pg-msg pg-msg--ai">Welcome to PromptGate.</div>
+        </section>
+
+        <!-- Input form -->
+        <form class="pg-input" id="chat-form">
+            <label for="prompt" class="sr-only">Your prompt</label>
+            <textarea id="prompt" name="prompt" rows="3" placeholder="Type your prompt…"></textarea>
+
+            <div class="pg-input-actions">
+                <button type="submit">Send</button>
+                <span class="pg-hint" id="rate-hint">Rate limit: 3/min</span>
+            </div>
+        </form>
+
+        <!-- Request Log -->
+        <aside class="pg-log">
+            <details open>
+                <summary>Request Log</summary>
+                <ul class="pg-log-list" id="log-list">
+                    <!-- Dynamic request logs -->
+                </ul>
+            </details>
+        </aside>
+    </main>
 {% endblock %}
 {% block scripts %}
-  <script src="{{ url_for('static', filename='js/chat.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/chat.js') }}" defer></script>
 {% endblock %}
 
