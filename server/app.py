@@ -36,7 +36,7 @@ limiter = Limiter(
     app=app,
     default_limits=["100 per hour"]
 )
-app.register_blueprint(chat_bp)
+
 @app.errorhandler(429)
 def rate_limit_exceeded(e):
     return jsonify({"error": "Rate limit exceeded"}), 429
