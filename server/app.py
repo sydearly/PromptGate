@@ -50,3 +50,7 @@ def handle_ratelimit_error(e):
     return jsonify({
         "error": "Rate limit exceeded. Please wait a moment before sending more prompts."
     }), 429
+
+@app.get("/health")
+def health():
+    return jsonify(ok=True)
