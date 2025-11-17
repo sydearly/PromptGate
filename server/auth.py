@@ -24,9 +24,11 @@ def login():
     google_provider_cfg = get_google_provider_cfg()
     authorization_endpoint = google_provider_cfg["authorization_endpoint"]
 
+    redirect_uri = url_for("auth.callback", _external=True)  # must match
+
     request_uri = client.prepare_request_uri(
         authorization_endpoint,
-        redirect_uri=request.host_url + "callback",
+        redirect_uri=redirect_uri,
         scope=["openid", "email", "profile"],
     )
     return redirect(request_uri)
@@ -39,11 +41,13 @@ def callback():
     google_provider_cfg = get_google_provider_cfg()
     token_endpoint = google_provider_cfg["token_endpoint"]
 
+    redirect_uri = url_for("auth.callback", _external=True)  # <-- key fix
+
     token_url, headers, body = client.prepare_token_request(
         token_endpoint,
         authorization_response=request.url,
-        redirect_url=request.host_url + "callback",
-        code=code
+        redirect_url=redirect_uri,
+        code=code,
     )
     token_response = requests.post(
         token_url,
