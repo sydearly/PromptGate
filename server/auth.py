@@ -24,7 +24,7 @@ def login():
     google_provider_cfg = get_google_provider_cfg()
     authorization_endpoint = google_provider_cfg["authorization_endpoint"]
 
-    redirect_uri = url_for("auth.callback", _external=True)  # must match
+    redirect_uri = url_for("auth.callback", _external=True, _scheme="https")  # must match
 
     request_uri = client.prepare_request_uri(
         authorization_endpoint,
