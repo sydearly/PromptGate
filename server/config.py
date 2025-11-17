@@ -6,9 +6,11 @@ from datetime import timedelta
 if os.getenv("USE_DOTENV", "0") == "1":
     try:
         from dotenv import load_dotenv  # add python-dotenv to requirements if you use this
+
         load_dotenv()
     except Exception:
         pass
+
 
 class Config:
     # Flask

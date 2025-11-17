@@ -5,7 +5,6 @@ from server.extensions import limiter
 from werkzeug.middleware.proxy_fix import ProxyFix
 
 
-
 def create_app():
     app = Flask(__name__, template_folder="templates", static_folder="static")
     app.config.from_object(Config)

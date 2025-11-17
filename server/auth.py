@@ -7,8 +7,10 @@ from server.config import Config
 auth_bp = Blueprint("auth", __name__, url_prefix="/auth")
 client = WebApplicationClient(Config.GOOGLE_CLIENT_ID)
 
+
 def get_google_provider_cfg():
     return requests.get(Config.GOOGLE_DISCOVERY_URL).json()
+
 
 @auth_bp.route("/login")
 def login():
@@ -24,6 +26,7 @@ def login():
         scope=["openid", "email", "profile"],
     )
     return redirect(request_uri)
+
 
 @auth_bp.route("/callback")
 def callback():
@@ -49,10 +52,14 @@ def callback():
     uri, headers, body = client.add_token(userinfo_endpoint)
     userinfo_response = requests.get(uri, headers=headers, data=body)
 
-    if userinfo_response.json().get("email_verified"):
-        session["user"] = userinfo_response.json()["email"]
+    data = userinfo_response.json()
+    if data.get("email_verified"):
+        session["user"] = data["email"]
+        # Prefer given_name, fallback to full name
+        session["user_name"] = data.get("given_name") or data.get("name") or ""
         return redirect(url_for("auth.dashboard"))
-    return "User email not available or not verified.", 400
+    else:
+        return "User email not available or not verified.", 400
 
 @auth_bp.route("/dashboard")
 def dashboard():
@@ -60,6 +67,7 @@ def dashboard():
     if not user:
         return redirect(url_for("auth.login"))
     return render_template("dashboard.html", user=user)
+
 
 @auth_bp.route("/logout")
 def logout():
