@@ -2,6 +2,9 @@
 from flask import Flask, jsonify
 from server.config import Config
 from server.extensions import limiter
+from werkzeug.middleware.proxy_fix import ProxyFix
+
+
 
 def create_app():
     app = Flask(__name__, template_folder="templates", static_folder="static")
@@ -38,5 +41,11 @@ def create_app():
     import os
     if app.debug or os.getenv("OAUTHLIB_INSECURE_TRANSPORT", "0") == "1":
         os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
+
+    app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_port=1)
+    app.config.update(
+        PREFERRED_URL_SCHEME="https",
+        SESSION_COOKIE_SECURE=True,
+    )
 
     return app

@@ -10,7 +10,7 @@ app.config.from_object(Config)
 # Tell IDE about routes:
 # noinspection PyUnresolvedReferences
 app.add_url_rule('/logout', endpoint='auth.logout')
-auth_bp = Blueprint("auth", __name__)
+auth_bp = Blueprint("auth", __name__,url_prefix="/auth")
 client = WebApplicationClient(Config.GOOGLE_CLIENT_ID)
 
 
